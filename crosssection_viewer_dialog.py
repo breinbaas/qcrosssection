@@ -73,6 +73,7 @@ class CrosssectionViewerDialog(QtWidgets.QDialog, FORM_CLASS):
 
         # fill the listbox with point types
         self.lwCharacteristicPoints.addItems(CharacteristicPointNames.values())
+        self.lwCharacteristicPoints.setCurrentRow(2)
 
         self._initialize_figure_and_canvas()
         self._connect()
@@ -104,7 +105,7 @@ class CrosssectionViewerDialog(QtWidgets.QDialog, FORM_CLASS):
 
     def onPbRefreshClicked(self):
         crosssection_id = self._crosssection_ids[self._selected_index]
-        self._crosssection_ids[
+        self._crosssections[
             self._selected_index
         ] = self._database.get_crosssection_by_id(crosssection_id)
         self._update_figure()
